@@ -7,8 +7,14 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
+<ul>
 {% block body %}{% endblock %}
-salut {{ p }}
+{% for item in books %}
+<li>
+{{ item }}
+</li>
+{% endfor %}
+</ul>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

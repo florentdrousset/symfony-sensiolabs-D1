@@ -40,11 +40,27 @@ class DefaultController extends Controller
      */
 
     public function aboutController(string $prenom, Request $request) {
-        var_dump($prenom);
         $prenom = ucfirst($prenom);
         return $this->render('default/about.html.twig', [
             'p' => $prenom
         ]);
         //Par ce mécanisme, je transmet la valeur de ma variable au template about
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/books", name="books")
+     */
+    public function bookAction(Request $request) {
+        $books = ['titre' => '1Q84',
+            'auteur' => 'Haruki Murakami',
+            'parution' => '2012',
+            'presentation' => 'Très bon bouquin'
+        ];
+
+        return $this->render('default/books.html.twig', [
+            'books' => $books
+        ]);
     }
 }

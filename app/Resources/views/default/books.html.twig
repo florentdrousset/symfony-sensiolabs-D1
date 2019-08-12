@@ -11,12 +11,13 @@
 {% block body %}{% endblock %}
 {% for item in books %}
 <h1>{{ item.titre }}</h1>
-    {% if (item.parution > 2015) %}
-    <p>Nouveauté !</p>
+    {% if (item.parution|date('Y') > 2015) %}
+    <p style="color:blue">Nouveauté !</p>
     {% endif %}
-    <p>écrit par {{ item.auteur }} en {{ item.parution }}</p>
+    <p>écrit par {{ item.auteur }} en {{ item.parution|date('Y/m/d') }}</p>
     <p>{{ item.presentation }}</p>
 {% endfor %}
+    {# test de commentaire #}
 </article>
 {% block javascripts %}{% endblock %}
 </body>

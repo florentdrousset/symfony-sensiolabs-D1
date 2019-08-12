@@ -55,12 +55,12 @@ class DefaultController extends Controller
     public function bookAction(Request $request) {
         $books = [['titre' => '1Q84',
             'auteur' => 'Haruki Murakami',
-            'parution' => '2012',
+            'parution' => new \DateTime('2012-01-01'),
             'presentation' => 'Très bon bouquin'
         ], [
             'titre' => 'Des hommes sans femmes',
             'auteur' => 'Haruki Murakami',
-            'parution' => '2016',
+            'parution' => new \DateTime('2017-01-01'),
             'presentation' => 'Excellent livre'
         ]];
 

@@ -53,11 +53,16 @@ class DefaultController extends Controller
      * @Route("/books", name="books")
      */
     public function bookAction(Request $request) {
-        $books = ['titre' => '1Q84',
+        $books = [['titre' => '1Q84',
             'auteur' => 'Haruki Murakami',
             'parution' => '2012',
             'presentation' => 'Très bon bouquin'
-        ];
+        ], [
+            'titre' => 'Des hommes sans femmes',
+            'auteur' => 'Haruki Murakami',
+            'parution' => '2016',
+            'presentation' => 'Excellent livre'
+        ]];
 
         return $this->render('default/books.html.twig', [
             'books' => $books

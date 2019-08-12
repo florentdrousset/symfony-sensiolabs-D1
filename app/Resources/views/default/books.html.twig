@@ -7,14 +7,17 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<ul>
+<article>
 {% block body %}{% endblock %}
 {% for item in books %}
-<li>
-{{ item }}
-</li>
+<h1>{{ item.titre }}</h1>
+    {% if (item.parution > 2015) %}
+    <p>Nouveauté !</p>
+    {% endif %}
+    <p>écrit par {{ item.auteur }} en {{ item.parution }}</p>
+    <p>{{ item.presentation }}</p>
 {% endfor %}
-</ul>
+</article>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

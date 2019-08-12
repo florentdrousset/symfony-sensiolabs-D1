@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+    {% block navbar %}
+        {%  include 'default/nav.html.twig' %}
+    {% endblock %}
+    {% block body %}
+        <main>
+            <div>
+            <h1>{{ books.titre }} par {{ books.auteur }}</h1>
+            <p>Description :</p>
+            <p>{{ books.presentation }}</p>
+            </div>
+            {% block sidebar %}
+                {% include 'default/side-bar.html.twig' %}
+            {%  endblock %}
+        </main>
+
+    {% endblock %}
+

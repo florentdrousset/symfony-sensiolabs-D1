@@ -16,7 +16,9 @@
     {% endif %}
     <p>écrit par {{ item.auteur }} en {{ item.parution|date('Y/m/d') }}</p>
     <p>{{ item.presentation }}</p>
+    <p><a href="{{ path('details', {'id': item.id}) }}">Voir la fiche de ce livvre</a></p>
 {% endfor %}
+
     {# test de commentaire #}
 </article>
 {% block javascripts %}{% endblock %}

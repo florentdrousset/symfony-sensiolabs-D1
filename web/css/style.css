@@ -1,0 +1,17 @@
+body, html {
+    height: 100%;
+    width: 100%
+}
+
+#books {
+    width: 20%;
+    height: 1000%;
+    background-color: grey;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}

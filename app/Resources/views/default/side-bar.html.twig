@@ -1,0 +1,7 @@
+<aside id="card books">
+    Livres du même auteur :
+
+    {{ render(controller('AppBundle\\Controller\\DefaultController::auteurAction', {'auteur': books.auteur })
+    ) }}
+
+</aside>

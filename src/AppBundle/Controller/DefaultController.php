@@ -8,6 +8,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
 {
+    public $books;
+
+    public function __construct() {
+        $this->books = [['id' => '0',
+            'titre' => '1Q84',
+            'auteur' => 'Haruki Murakami',
+            'parution' => new \DateTime('2012-01-01'),
+            'presentation' => 'Très bon bouquin'
+        ], [
+            'id' => '1',
+            'titre' => 'Des hommes sans femmes',
+            'auteur' => 'Haruki Murakami',
+            'parution' => new \DateTime('2017-01-01'),
+            'presentation' => 'Excellent livre'
+        ],
+            [
+                'id' => '2',
+                'titre' => 'Les Misérables',
+                'auteur' => 'Victor Hugo',
+                'parution' => new \DateTime('1862-01-01'),
+                'presentation' => 'Très bon bouquin'
+            ]];
+    }
     /**
      * @Route("/", name="homepage")
      */
@@ -53,19 +76,35 @@ class DefaultController extends Controller
      * @Route("/books", name="books")
      */
     public function bookAction(Request $request) {
-        $books = [['titre' => '1Q84',
-            'auteur' => 'Haruki Murakami',
-            'parution' => new \DateTime('2012-01-01'),
-            'presentation' => 'Très bon bouquin'
-        ], [
-            'titre' => 'Des hommes sans femmes',
-            'auteur' => 'Haruki Murakami',
-            'parution' => new \DateTime('2017-01-01'),
-            'presentation' => 'Excellent livre'
-        ]];
-
+        $books = $this->books;
         return $this->render('default/books.html.twig', [
             'books' => $books
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @Route("/details/{id}", name="details")
+     */
+    public function bookDetailAction(Request $request, $id) {
+        $books = $this->books;
+        return $this->render('default/details.html.twig', [
+                'books' => $books[$id]
+            ]);
+    }
+
+    /**
+     * @Route("/auteur/{nom}", name="auteur")
+     */
+    public function auteurAction($auteur) {
+        $books = $this->books;
+        $selection = array_filter($books, function($books) use ($auteur) {
+           return $books['auteur'] == $auteur;
+        });
+        return
+            $this->render('default/author.html.twig', [
+            'selection' => $selection
+       ]);
     }
 }
